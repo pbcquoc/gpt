@@ -45,17 +45,22 @@ Dự án này triển khai mô hình GPT (Generative Pre-trained Transformer) t�
 
 
 2. **Huấn Luyện Mô Hình**
-- Chạy kịch bản huấn luyện:
-```
-python train.py
-```
-Các tham số huấn luyện như số layer, số head, kích thước embedding, learning rate, v.v. có thể được điều chỉnh trực tiếp trong file train.py.
+  - Chạy kịch bản huấn luyện:
+  ```
+  python train.py
+  ```
+  Các tham số huấn luyện như số layer, số head, kích thước embedding, learning rate, v.v. có thể được điều chỉnh trực tiếp trong file train.py.
 
 3. **Sinh Văn Bản**
-- Trong quá trình huấn luyện, sau mỗi khoảng thời gian nhất định (ví dụ: mỗi 2000 iterations), mô hình sẽ sinh ra văn bản mẫu dựa trên prompt ban đầu.
-- Kết quả sinh mẫu sẽ được in ra console.
+  - Trong quá trình huấn luyện, sau mỗi khoảng thời gian nhất định (ví dụ: mỗi 2000 iterations), mô hình sẽ sinh ra văn bản mẫu dựa trên prompt ban đầu.
+  - Kết quả sinh mẫu sẽ được in ra console.
 
 4. **Lưu & Tải Mô Hình**
    
 - Sau khi huấn luyện xong, mô hình cùng trạng thái của bộ tối ưu được lưu vào file out/ckpt.pt.
 - Bạn có thể tải lại checkpoint này để tiếp tục huấn luyện hoặc thực hiện sinh văn bản.
+
+## Liên Hệ & Hỗ Trợ
+Nếu bạn có bất kỳ câu hỏi hoặc gặp vấn đề gì trong quá trình sử dụng, vui lòng mở issue trên repository hoặc liên hệ với tác giả để được hỗ trợ.
+
+
