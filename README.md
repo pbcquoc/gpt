@@ -43,6 +43,42 @@ Dự án này triển khai mô hình GPT (Generative Pre-trained Transformer) t�
 
 1. **Chuẩn Bị Dữ Liệu**
 
+Khi huấn luyện GPT‑2, mô hình được cung cấp các khối đầu vào có kích thước cố định (ví dụ: 1024 token). Thông thường, bạn không có mỗi ví dụ huấn luyện dài đúng 1024 token – thay vào đó, bạn tạo ra một luồng dài văn bản đã được mã hóa thành token và sau đó chia nó thành các khối liền mạch chứa 1024 token.
+
+Ví dụ, nếu file huấn luyện kết hợp của bạn trông như sau:
+```
+EN: I love machine learning.
+VI: Tôi yêu học máy.
+<|endoftext|>
+EN: How are you today?
+VI: Bạn có khỏe không hôm nay?
+<|endoftext|>
+EN: The weather is nice and sunny.
+VI: Thời tiết đẹp và nắng.
+<|endoftext|>
+...
+```
+Khi bạn mã hóa file này thành token, bạn nhận được một danh sách dài các ID token. Trong quá trình tiền xử lý, danh sách này được chia thành các đoạn gồm 1024 token. Một đoạn như vậy có thể bắt đầu từ giữa một ví dụ và kết thúc giữa một ví dụ khác.
+
+Ví dụ, một khối đầu vào (giả định) gồm 1024 token có thể trông như sau khi giải mã lại thành văn bản (lưu ý rằng quá trình mã hóa và giải mã token có thể không khôi phục hoàn toàn định dạng ban đầu):
+```
+EN: I love machine learning.
+VI: Tôi yêu học máy.
+<|endoftext|>
+EN: How are you today?
+VI: Bạn có khỏe không hôm nay?
+<|endoftext|>
+EN: The weather is nice and sunny.
+VI: Thời tiết đẹp và nắng.
+<|endoftext|>
+EN: What time is it?
+VI: Mấy giờ rồi?
+<|endoftext|>
+...
+```
+Khối này có thể bao gồm nhiều ví dụ đầy đủ, cùng với một phần của ví dụ bổ sung nếu ranh giới 1024 token rơi vào giữa ví dụ.
+
+Tóm lại, mặc dù dữ liệu huấn luyện của bạn gồm nhiều ví dụ song ngữ riêng lẻ, nhưng chúng được nối lại thành một luồng văn bản dài và sau đó được chia thành các khối có 1024 token. Điều này đảm bảo rằng mỗi đầu vào huấn luyện cho mô hình có kích thước cố định như yêu cầu của GPT‑2.
 
 2. **Huấn Luyện Mô Hình**
   - Chạy kịch bản huấn luyện:
