@@ -80,7 +80,7 @@ Khối này có thể bao gồm nhiều ví dụ đầy đủ, cùng với một
 
 Tóm lại, mặc dù dữ liệu huấn luyện của bạn gồm nhiều ví dụ song ngữ riêng lẻ, nhưng chúng được nối lại thành một luồng văn bản dài và sau đó được chia thành các khối có 1024 token. Điều này đảm bảo rằng mỗi đầu vào huấn luyện cho mô hình có kích thước cố định như yêu cầu của GPT‑2.
 
-Phát sinh dữ liệu
+- Phát sinh dữ liệu
 ```
 unzip data/train-en-vi/input.zip 
 python data/train-en-vi/test_data.py
